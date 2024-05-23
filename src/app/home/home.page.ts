@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   Component,
   ElementRef,
   HostListener,
@@ -44,8 +45,13 @@ import { ModalTutorialComponent } from './Components/modal-tutorial/modal-tutori
   ],
   providers: [ModalController],
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit, AfterViewInit {
   constructor(private modaCtr: ModalController) {}
+  ngAfterViewInit(): void {
+    this.modaCtr
+      .create({ component: ModalTutorialComponent, cssClass: 'custom-modal' })
+      .then((modal) => modal.present());
+  }
   @ViewChild('rendererCanvas', { static: true }) rendererCanvas!: ElementRef;
 
   private scene!: Scene;
@@ -58,9 +64,6 @@ export class HomePage implements OnInit {
   private bones: Bone[] = [];
 
   ngOnInit() {
-    this.modaCtr
-      .create({ component: ModalTutorialComponent, cssClass: 'custom-modal' })
-      .then((modal) => modal.present());
     //Import three fbxLoader
     this.initThreeJS();
     this.loadModel();
