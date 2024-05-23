@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+h1 {
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+}
+ion-card {
+  margin: 20px;
+  padding: 20px 40px;
+}
+
+.infoGeneral {
+  font-size: 16px;
+  margin-top: 5px;
+}
+.note {
+  background: rgb(48, 48, 48);
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin-top: 5px;
+}
+h3 {
+  margin-top: 10px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.integrantes {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin-bottom: 5px;
+  flex-wrap: wrap;
+}
+.integrantes li {
+  background: rgb(48, 48, 48);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin-right: 5px;
+  margin-bottom: 7px;
+}
+.btns {
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+}
+.button {
+  color: white;
+  font-weight: bold;
+}

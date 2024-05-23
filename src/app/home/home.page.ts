@@ -20,15 +20,26 @@ import {
   Euler,
 } from 'three';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
+import { ModalController } from '@ionic/angular';
+import { ModalTutorialComponent } from './Components/modal-tutorial/modal-tutorial.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, LeverComponent],
+  imports: [
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    LeverComponent,
+    ModalTutorialComponent,
+  ],
+  providers: [ModalController],
 })
 export class HomePage {
+  constructor(private modaCtr: ModalController) {}
   @ViewChild('rendererCanvas', { static: true }) rendererCanvas!: ElementRef;
 
   private scene!: Scene;
@@ -41,6 +52,9 @@ export class HomePage {
   private bones: Bone[] = [];
 
   ngOnInit() {
+    this.modaCtr
+      .create({ component: ModalTutorialComponent, cssClass: 'custom-modal' })
+      .then((modal) => modal.present());
     //Import three fbxLoader
     this.initThreeJS();
     this.loadModel();
