@@ -6,4 +6,9 @@
     <app-lever (rotateEvent)="rotJaw = $event"></app-lever>
     <app-lever (rotateEvent)="rotEyeBrow = $event"></app-lever>
   </section>
+  <section class="btnHelper">
+    <ion-button class="btnManual" (click)="openModal()"
+      >Manual de usuario</ion-button
+    >
+  </section>
 </ion-content>

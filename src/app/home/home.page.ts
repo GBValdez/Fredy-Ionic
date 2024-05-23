@@ -11,6 +11,7 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
+  IonButton,
 } from '@ionic/angular/standalone';
 import { LeverComponent } from './Components/lever/lever.component';
 import {
@@ -42,15 +43,14 @@ import { ModalTutorialComponent } from './Components/modal-tutorial/modal-tutori
     IonContent,
     LeverComponent,
     ModalTutorialComponent,
+    IonButton,
   ],
   providers: [ModalController],
 })
 export class HomePage implements OnInit, AfterViewInit {
   constructor(private modaCtr: ModalController) {}
   ngAfterViewInit(): void {
-    this.modaCtr
-      .create({ component: ModalTutorialComponent, cssClass: 'custom-modal' })
-      .then((modal) => modal.present());
+    this.openModal();
   }
   @ViewChild('rendererCanvas', { static: true }) rendererCanvas!: ElementRef;
 
@@ -68,6 +68,11 @@ export class HomePage implements OnInit, AfterViewInit {
     this.initThreeJS();
     this.loadModel();
     this.onResize(); // Ajustar tamaño inicial
+  }
+  openModal() {
+    this.modaCtr
+      .create({ component: ModalTutorialComponent, cssClass: 'custom-modal' })
+      .then((modal) => modal.present());
   }
 
   private initThreeJS() {
