@@ -30,6 +30,7 @@ import {
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
 import { ModalController } from '@ionic/angular';
 import { ModalTutorialComponent } from './Components/modal-tutorial/modal-tutorial.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -47,13 +48,13 @@ import { ModalTutorialComponent } from './Components/modal-tutorial/modal-tutori
   ],
   providers: [ModalController],
 })
-export class HomePage implements OnInit, AfterViewInit {
-  constructor(private modaCtr: ModalController) {}
-  ngAfterViewInit(): void {
-    this.openModal();
-  }
+export class HomePage implements OnInit {
+  constructor(private router: Router) {}
   @ViewChild('rendererCanvas', { static: true }) rendererCanvas!: ElementRef;
 
+  returnTutorial() {
+    this.router.navigate(['/modal-tutorial']);
+  }
   private scene!: Scene;
   private camera!: PerspectiveCamera;
   private renderer!: WebGLRenderer;
@@ -68,12 +69,6 @@ export class HomePage implements OnInit, AfterViewInit {
     this.initThreeJS();
     this.loadModel();
     this.onResize(); // Ajustar tamaño inicial
-  }
-  async openModal() {
-    const modal = await this.modaCtr.create({
-      component: ModalTutorialComponent,
-    });
-    modal.present();
   }
 
   private initThreeJS() {

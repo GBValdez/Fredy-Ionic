@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 @Component({
@@ -9,11 +10,11 @@ import { ModalController } from '@ionic/angular';
   imports: [IonicModule],
 })
 export class ModalTutorialComponent implements OnInit {
-  constructor(private modalCtrl: ModalController) {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
   closeModal() {
-    this.modalCtrl.dismiss();
+    this.router.navigate(['/home']);
     // Close the modal
   }
 }

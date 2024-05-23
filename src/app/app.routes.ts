@@ -6,8 +6,15 @@ export const routes: Routes = [
     loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
   },
   {
+    path: 'modal-tutorial',
+    loadComponent: () =>
+      import('./home/Components/modal-tutorial/modal-tutorial.component').then(
+        (m) => m.ModalTutorialComponent
+      ),
+  },
+  {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'modal-tutorial',
     pathMatch: 'full',
   },
 ];
