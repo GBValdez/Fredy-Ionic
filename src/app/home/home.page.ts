@@ -1,4 +1,10 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import {
   IonHeader,
   IonToolbar,
@@ -38,7 +44,7 @@ import { ModalTutorialComponent } from './Components/modal-tutorial/modal-tutori
   ],
   providers: [ModalController],
 })
-export class HomePage {
+export class HomePage implements OnInit {
   constructor(private modaCtr: ModalController) {}
   @ViewChild('rendererCanvas', { static: true }) rendererCanvas!: ElementRef;
 
