@@ -70,6 +70,7 @@ export class HomePage implements OnInit, AfterViewInit {
     this.onResize(); // Ajustar tamaño inicial
   }
   openModal() {
+    alert('openModal');
     this.modaCtr
       .create({ component: ModalTutorialComponent, cssClass: 'custom-modal' })
       .then((modal) => modal.present());
